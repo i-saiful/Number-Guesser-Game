@@ -38,17 +38,17 @@ function getNumber(e) {
 }
 
 function palyGame(checkNumber) {
-    if(checkNumber === randomNumber) {
+    if(checkNumber === correcr_ans) {
         count = 0
-        guessNumber.textContent = randomNumber;
+        guessNumber.textContent = correcr_ans;
         playBoard.innerHTML = `
         <p class="alert-success mx-auto py-2 px-3 rounded" style="font-size: 2rem; width: max-content;"><i class="bi bi-trophy-fill"></i> You Win</p>
         <button class="btn btn-primary" style="font-size: 2rem;">Game Start</button>
         `
         chances.innerHTML = ``;
         hints.innerHTML =  ``;
-        randomNumber = Math.floor(Math.random() * high) + 1;
-    } else if(checkNumber > randomNumber) {
+        correcr_ans = Math.floor(Math.random() * high) + 1;
+    } else if(checkNumber > correcr_ans) {
         hints.innerHTML = `
             <div class="alert alert-warning alert-dismissible fade show mx-auto" role="alert" style="width: max-content;">
                 Correct answer is <strong>smaller</strong>!
@@ -70,14 +70,14 @@ function palyGame(checkNumber) {
 
     if(count === 3) {
         count = 0
-        guessNumber.textContent = randomNumber;
+        guessNumber.textContent = correcr_ans;
         playBoard.innerHTML = `
         <p class="alert-danger mx-auto py-2 px-3 rounded" style="font-size: 2rem; width: max-content;">You lose!</p>
         <button class="btn btn-primary" style="font-size: 2rem;">Game Start</button>
         `
         chances.innerHTML = ``
         hints.innerHTML =  ``
-        randomNumber = Math.floor(Math.random() * high) + 1;
+        correcr_ans = Math.floor(Math.random() * high) + 1;
     } else if(count === 1) {
         chances.firstElementChild.textContent = checkNumber;
         chances.firstElementChild.classList.remove('bg-light');
@@ -93,5 +93,5 @@ function palyGame(checkNumber) {
 
 const low = 1;
 const high = 10;
-let randomNumber = Math.floor(Math.random() * high) + 1
+let correcr_ans = Math.floor(Math.random() * high) + 1
 let count = 0
